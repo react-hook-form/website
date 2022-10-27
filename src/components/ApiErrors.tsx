@@ -27,7 +27,7 @@ export default React.memo(
             errors:{" "}
             <span
               className={typographyStyles.typeText}
-            >{`Record<string, Object>`}</span>
+            >{`Record<string, object>`}</span>
           </h2>
         </code>
 

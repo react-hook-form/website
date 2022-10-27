@@ -22,6 +22,7 @@ const Layout = (props: {
   const { currentLanguage } =
     language && language.currentLanguage ? language : { currentLanguage: "en" }
   const lightMode = state?.setting?.lightMode
+  const currentVersion = state?.setting?.version
   const [show, setShow] = React.useState(false)
   const scrollHandler = () => {
     if (window.scrollY > 75) {
@@ -30,7 +31,11 @@ const Layout = (props: {
       setShow(false)
     }
   }
-  const editLink = getEditLink(currentLanguage, props.location?.pathname)
+  const editLink = getEditLink(
+    currentVersion,
+    currentLanguage,
+    props.location?.pathname
+  )
 
   React.useEffect(() => {
     window.addEventListener("scroll", scrollHandler)
