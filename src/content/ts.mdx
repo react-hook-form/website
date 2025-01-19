@@ -56,6 +56,8 @@ export default function App() {
 
 ## \</> SubmitHandler {#SubmitHandler}
 
+This type describes the shape of the data that is passed to the submit handler. By default the type used in the angle brackets should be the same as the type used for `useForm` ({#UseFormReturn}). When form data is transformed into a different shape via resolvers, a different type that describes the new shape of the form data should be used instead.
+
 ```typescript copy sandbox="https://codesandbox.io/s/react-hook-form-handlesubmit-ts-v7-z9z0g"
 import React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -123,6 +125,8 @@ export default function App() {
 ---
 
 ## \</> UseFormReturn {#UseFormReturn}
+
+The first type used in the angle brackets describes the shape of the form data. It should be the same type used in the submit handler function ({#SubmitHandler}) unless the form data is transformed via resolvers. In that case an additional type can be used as a third parameter inside the angle brackets, which describes the shape of the form data after transformation.
 
 <TabGroup buttonLabels={["Type", "Code Example"]}>
 
