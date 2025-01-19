@@ -1,0 +1,86 @@
+---
+title: createFormControl
+description: Create form state and ready to be subscribed
+sidebar: apiLinks
+---
+
+This function create the entire form state subscription and allow you to subscribe update with or without react component.
+
+### Props
+
+---
+
+This following table applied to `FormProvider`, `useFormContext` accepts no argument.
+
+| Name       | Type                        | Description                                    |
+| ---------- | --------------------------- | ---------------------------------------------- |
+| `...props` | <TypeText>Object</TypeText> | `UseFormProps` |
+
+<Admonition type="important" title="Notes">
+- This function is published at **v7.55.0**
+- This function is completely optional, you can consider to use this instead of `useFormContext` API.
+- You may find it useful if you would like to subscribe formsState by skipping react re-render.
+</Admonition>
+
+**Examples:**
+
+---
+
+<TabGroup buttonLabels={["Setup", "Subscribe"]}>
+
+```javascript
+const { formControl, control } = createFormControl({
+  mode: 'onChange',
+  defaultValues: {
+    firstName: 'Bill'
+  }
+}})
+
+function App() {
+  const { register, handleSubmit } = useForm({
+    formControl,
+  })
+
+  return (
+    <form onSubmit={handleSubmit(data => console.log)}>
+      <input {...register('name')} />
+      <FormState />
+      <Controller />
+    </form>
+  );
+}
+
+function FormState() {
+  useFormState({
+    control // no longer need context api
+  })
+}
+
+function Controller() {
+  useFormState({
+    control // no longer need context api
+  })
+}
+```
+
+```javascript
+const { formControl } = createFormControl(props)
+
+formControl.subscribe({
+  formState: { isDirty: true },
+  callback: (formState) => {
+    if (formState.isDirty) {
+      // do something here
+    }
+  }
+})
+
+function App() {
+  const { register } = useForm({
+    formControl,
+  })
+
+  return <form />
+}
+```
+</TabGroup>

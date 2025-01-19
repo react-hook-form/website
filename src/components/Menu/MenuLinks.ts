@@ -159,6 +159,10 @@ export const apiLinks: Pages = [
     pathname: "/docs/usefieldarray",
     name: "useFieldArray",
   },
+  {
+    pathname: "/docs/createFormControl",
+    name: "createFormControl",
+  },
 ]
 
 export const tsLinks: Pages = [
